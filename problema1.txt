@@ -1,0 +1,8 @@
+
+Después de todo los procesos de levantamiento de información y análisis del problemas y los datos, 
+
+Comenzaría estructurando las tablas de la base de datos,conocer las posibles relaciones que esta debe poseer, y optimizaría al máximo hasta obtener el mejor rendimiento. Para ello usaría tablas bases, de relación y de vistas. (PostgreSql).
+
+Seguidamente, me enfocaría en el desarrollo backend, en el cual, estaré construyendo según la lógica de negocio, en el mismo implementare una API Rest, el cual, contendrá el CRUD y demás funciones que son requeridas para el éxito del negocio. Testeare los API consumibles con Postman, mientra que el desarrollo lo aplicare sobre el marco de trabajo Spring de Java, por ser este uno de los mas cómodos para mi. Los protocolos a usar son las Dependencias necesarias para la comunicación con el Backend y la Base de datos, ademas se adicionan plugin y driver. 
+
+Por ultimo, desarrollare el frontend con React, el mismo me permite crear componentes específicos e importante para realizar la comunicación con el backend, se aplicaran una serie de configuraciones de comunicación pueden ser por medio de Axios o Fetch. Ademas de agregar las dependencias necesarias y requeridas para el proyecto. 

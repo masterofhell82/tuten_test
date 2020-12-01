@@ -21,7 +21,7 @@ public class TimeController {
     public List<Timezone>listar(){
         return timeService.listar();
     }
-    
+
     //Function that will return the calculated time
     @PostMapping("/converter")
     public Object timeCalculated(@RequestParam Time time, @RequestParam String utc){
