@@ -49,7 +49,7 @@ export const Bookings = (props) => {
 		};
 
 		HttpRequest.endpoint = `${API}user/contacto@tuten.cl/bookings?current=true`;
-		const res = HttpRequest.get(payload);
+		//const res = HttpRequest.get(payload);
 	};
 
 	useEffect(() => {
