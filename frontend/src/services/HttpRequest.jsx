@@ -1,21 +1,46 @@
-import React from 'react'
+class HttpRequest {
+	constructor() {
+		this.config = this.config.bind(this);
+		this.get = this.get.bind(this);
+		this.post = this.post.bind(this);
+		this.put = this.put.bind(this);
+		this.delete = this.delete.bind(this);
+	}
 
-const API = process.env.REACT_APP_API;
+	static async get(payload) {
+		const request = await fetch(this.endpoint, {
+			method: 'GET',
+			headers: {
+				Accept: 'application/json',
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify(payload),
+		});
 
-const config =  {
-        headers: {
-            "Content-Type": "application/json",
-        },
-    };
+		const data = await request.json();
 
+		return data;
+	}
 
-const getRequest = async (url, payload)  => {
-    const res = await fetch(url, {
-        method: 'GET',
-        mode: "cors",
-        config,
-        body: JSON.stringify(payload),
-    })
+	static async post(payload, multipart = null) {
+		let getConfig = this.config();
+		try {
+			const request = await fetch(this.endpoint, {
+				method: 'POST',
+				mode: 'cors',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify(payload),
+			});
 
-}  
+			const data = request.json();
 
+			return data;
+		} catch (error) {
+			console.log(error.message);
+		}
+	}
+}
+
+export default HttpRequest;

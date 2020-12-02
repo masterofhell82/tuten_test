@@ -15,6 +15,9 @@ function App() {
 					<Route path="/" component={Login} />
 				</Switch>
 			</div>
+			<div className="m-t-40 text-center">
+				<p>© {new Date().getFullYear()} Andrés Benitez</p>
+			</div>
 		</Router>
 	);
 }

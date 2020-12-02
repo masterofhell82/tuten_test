@@ -2,27 +2,40 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Button, Col, Row, Card } from 'reactstrap';
 import { AvForm, AvField } from 'availity-reactstrap-validation';
+import HttpRequest from '../services/HttpRequest';
 
 export const Login = () => {
+	const API = 'https://dev.tuten.cl/TutenREST/rest/';
+
 	const [userName, setUserName] = useState('');
 	const [password, setPassword] = useState('');
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
+
+		const data = {
+			password: password,
+			app: 'APP_BCK',
+		};
+
+		HttpRequest.endpoint = `${API}user/${userName}`;
+		const res = await HttpRequest.post(data);
+
+		console.log(HttpRequest.endpoint, res);
 	};
 
 	return (
 		<React.Fragment>
 			<div className="wrapper-page">
-				<Card className="overflow-hidden account-card mx-3">
-					<div className="bg-primary p-4 text-white text-center position-relative">
-						<h4 className="font-20 m-b-5">Bienvenido a Tuten</h4>
+				<Card className="overflow-hidden account-card">
+					<div className="p-4 text-center position-relative band">
+						<h4 className="">Bienvenido a Tuten</h4>
 						<Link to="/">{/* <img className="logo logo-admin" src={logosm} height="200" alt="logo" /> */}</Link>
 					</div>
-					<div className="account-card-content">
+					<div className="account-card-content p-4">
 						<AvForm className="form-horizontal m-t-30" onValidSubmit={handleSubmit}>
-							<AvField name="username" label="Usuario" value={userName} placeholder="user@tuten.cl" type="text" required />
-							<AvField name="password" label="Contraseña" value={password} placeholder="**********" type="password" required />
+							<AvField name="username" label="Usuario" value={userName} onChange={(e) => setUserName(e.target.value)} placeholder="user@tuten.cl" type="text" required />
+							<AvField name="password" label="Contraseña" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="**********" type="password" required />
 
 							<Row className="form-group m-t-20">
 								<Col sm="6"></Col>
@@ -32,27 +45,9 @@ export const Login = () => {
 									</Button>
 								</Col>
 							</Row>
-
-							<Row className="form-group m-t-10 mb-0">
-								<Col md="12" className="m-t-20">
-									<Link to="/forget-password">
-										<i className="mdi mdi-lock"></i> Olvidaste la contraseña?
-									</Link>
-								</Col>
-							</Row>
 						</AvForm>
 					</div>
 				</Card>
-
-				<div className="m-t-40 text-center">
-					<p>
-						No tienes activado tu cuenta?{' '}
-						<Link to="/register" className="font-500 text-primary">
-							Registrate ahora!
-						</Link>
-					</p>
-					<p>© {new Date().getFullYear()} Andrés Benitez</p>
-				</div>
 			</div>
 		</React.Fragment>
 	);
