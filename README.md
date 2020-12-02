@@ -1,8 +1,8 @@
-## Problema 1
+## Problem 1
 
-El problema esta explicado y motado acá. 
+The solution is in the following link -> https://github.com/masterofhell82/tuten_test/blob/master/problema1.txt
 
-##
+## Problem 2
 
 Tools used for this test second problem / Backend
 
@@ -29,6 +29,7 @@ http://localhost:8080/backend/timezone/converter
 }
 
 
+## Problem 3
 Tools used for this test third problem / frontend
 
 Programming Language
