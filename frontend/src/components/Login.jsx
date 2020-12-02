@@ -1,9 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Alert, Button, Col, Row, Card } from 'reactstrap';
+import { Button, Col, Row, Card } from 'reactstrap';
 import { AvForm, AvField } from 'availity-reactstrap-validation';
 
 export const Login = () => {
+	const [userName, setUserName] = useState('');
+	const [password, setPassword] = useState('');
+
+	const handleSubmit = async (e) => {
+		e.preventDefault();
+	};
+
 	return (
 		<React.Fragment>
 			<div className="wrapper-page">
@@ -13,12 +20,9 @@ export const Login = () => {
 						<Link to="/">{/* <img className="logo logo-admin" src={logosm} height="200" alt="logo" /> */}</Link>
 					</div>
 					<div className="account-card-content">
-						{this.props.user && <Alert color="success">Your Login is successfull.</Alert>}
-						{this.props.loginError && <Alert color="danger">{this.props.loginError}</Alert>}
-
-						<AvForm className="form-horizontal m-t-30" onValidSubmit={this.handleSubmit}>
-							<AvField name="username" label="Usuario" value={this.state.username} placeholder="@123456789" type="text" required />
-							<AvField name="password" label="Contraseña" value={this.state.password} placeholder="**********" type="password" required />
+						<AvForm className="form-horizontal m-t-30" onValidSubmit={handleSubmit}>
+							<AvField name="username" label="Usuario" value={userName} placeholder="user@tuten.cl" type="text" required />
+							<AvField name="password" label="Contraseña" value={password} placeholder="**********" type="password" required />
 
 							<Row className="form-group m-t-20">
 								<Col sm="6"></Col>
